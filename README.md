@@ -1,3 +1,3 @@
 # book_lib
 
-add books to your library
+simple website to add books to your library
