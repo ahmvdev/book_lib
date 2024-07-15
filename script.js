@@ -12,9 +12,6 @@ function Book(title, author, genre, pages) {
   this.author = author;
   this.genre = genre;
   this.pages = pages;
-  this.info = function(){
-    return `${this.title} ${this.author} ${this.genre} ${this.pages}`
-  }
 }
 
 function addBookToLibrary(){
@@ -25,11 +22,16 @@ function addBookToLibrary(){
     const newBook = new Book(titleVal, authorVal, genreVal, pagesVal)
     myLibrary.push(newBook);
     console.log(myLibrary)
-}
 
-    var allinputs = document.querySelector('#myform');
-submitBtn.addEventListener('click', function(event){
-    event.preventDefault();
-    addBookToLibrary()
-    allinputs.reset();
-});
+ 
+    }
+
+
+
+    submitBtn.addEventListener('click', function(event){
+        event.preventDefault();
+        addBookToLibrary();
+        var allInputs = document.querySelector("#myform");
+        allInputs.reset();
+    });
+
