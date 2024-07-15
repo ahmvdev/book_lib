@@ -1,9 +1,35 @@
+const titleEl = document.querySelector('#title')
+const authorEl = document.querySelector('#author')
+const genreEl = document.querySelector('#genre')
+const pagesEl = document.querySelector('#pages')
+
+const submitBtn = document.querySelector('#submit-btn')
+
 const myLibrary = [];
 
-function Book() {
-  // the constructor...
+function Book(title, author, genre, pages) {
+  this.title = title;
+  this.author = author;
+  this.genre = genre;
+  this.pages = pages;
+  this.info = function(){
+    return `${this.title} ${this.author} ${this.genre} ${this.pages}`
+  }
 }
 
-function addBookToLibrary() {
-  // do stuff here
+function addBookToLibrary(){
+    let titleVal = titleEl.value;
+    let authorVal = authorEl.value;
+    let genreVal = genreEl.value;
+    let pagesVal = pagesEl.value;
+    const newBook = new Book(titleVal, authorVal, genreVal, pagesVal)
+    myLibrary.push(newBook);
+    console.log(myLibrary)
 }
+
+    var allinputs = document.querySelector('#myform');
+submitBtn.addEventListener('click', function(event){
+    event.preventDefault();
+    addBookToLibrary()
+    allinputs.reset();
+});
