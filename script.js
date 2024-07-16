@@ -21,16 +21,26 @@ function addBookToLibrary(){
     let pagesVal = pagesEl.value;
     const newBook = new Book(titleVal, authorVal, genreVal, pagesVal)
     myLibrary.push(newBook);
-    console.log(myLibrary)
-
  
     }
+    var table = document.querySelector('table');
 
+function displayBooks(){
+  table.innerHTML = '<tr><th>Title</th><th>Author</th><th>Genre</th><th>Pages</th></tr>'
+    myLibrary.forEach(function(book){  
+    let row = table.insertRow();
+    row.insertCell().textContent = book.title;
+    row.insertCell().textContent = book.author;
+    row.insertCell().textContent = book.genre;
+    row.insertCell().textContent = book.pages;
+    })
+}
 
+var allInputs = document.querySelector('#myform')
     submitBtn.addEventListener('click', function(event){
         event.preventDefault();
         addBookToLibrary();
-        var allInputs = document.querySelector("#myform");
         allInputs.reset();
+        displayBooks();
     });
 
